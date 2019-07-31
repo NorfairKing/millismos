@@ -1,0 +1,54 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.1.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: eddbc0aaec11562d552e2b2399a86e9cd8e0810cfd9f5b28e0f3aba472982c80
+
+name:           millismos
+version:        0.0.0.0
+description:    Please see the README on GitHub at <https://github.com/NorfairKing/millismos#readme>
+homepage:       https://github.com/NorfairKing/millismos#readme
+bug-reports:    https://github.com/NorfairKing/millismos/issues
+author:         Tom Sydney Kerckhove
+maintainer:     syd@cs-syd.eu
+copyright:      Copyright: (c) 2019 Tom Sydney Kerckhove
+license:        AllRightsReserved
+build-type:     Simple
+
+source-repository head
+  type: git
+  location: https://github.com/NorfairKing/millismos
+
+library
+  exposed-modules:
+      MilliSmos
+  other-modules:
+      Paths_millismos
+  hs-source-dirs:
+      src
+  build-depends:
+      base >=4.7 && <5
+    , brick
+    , bytestring
+    , containers
+    , cursor
+    , directory
+    , path-io
+    , text
+    , vty
+    , yaml
+  default-language: Haskell2010
+
+executable millismos
+  main-is: Main.hs
+  other-modules:
+      Paths_millismos
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends:
+      base >=4.7 && <5
+    , millismos
+  default-language: Haskell2010
