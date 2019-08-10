@@ -4,7 +4,7 @@ cabal-version: 1.12
 --
 -- see: https://github.com/sol/hpack
 --
--- hash: eddbc0aaec11562d552e2b2399a86e9cd8e0810cfd9f5b28e0f3aba472982c80
+-- hash: 3c03c71248e7773e19f6ac6d302b322877cdf6bb09ee50d1f2e5e6aa8aca0da0
 
 name:           millismos
 version:        0.0.0.0
@@ -34,6 +34,7 @@ library
     , bytestring
     , containers
     , cursor
+    , cursor-brick
     , directory
     , path-io
     , text

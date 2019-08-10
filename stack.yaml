@@ -2,8 +2,12 @@ resolver: lts-12.10
 packages:
 - .
 extra-deps:
+- git: https://github.com/NorfairKing/cursor-brick.git
+  commit: f4ecf7b83cd94704ee598711e8b72d74e30848f8
+  subdirs:
+    - cursor-brick
 - git: https://github.com/NorfairKing/cursor.git
-  commit: f67e8da673b3f934518810d9681206ff8cf1bf5e
+  commit: 0cedf6a4685648d47e82285e2250dd9a6177307d
   subdirs:
     - cursor
     - cursor-gen

@@ -19,6 +19,8 @@ import System.Directory
 import System.Environment
 import System.Exit
 
+import Cursor.Brick.Forest
+import Cursor.Brick.Tree
 import Cursor.Forest
 import Cursor.List.NonEmpty
 import Cursor.Text
@@ -98,7 +100,10 @@ draw :: State -> [Widget ResourceName]
 draw s =
   [ padAll 1 $
     vBox
-      [ withAttr nodeAttr $ padBottom Max $ drawForestCursor helper $ stateCursor s
+      [ withAttr nodeAttr $
+        padBottom Max $
+        verticalForestCursorWidget drawTextCTree (treeCursorWidget wrap cur) drawTextCTree $
+        stateCursor s
       , hBorder
       , withAttr modeAttr drawMode
       , hBorder
@@ -141,33 +146,6 @@ draw s =
                 , ("Esc", "Exit")
                 ]
        in (\(ks, vs) -> hBox $ [vBox ks, padLeft (Pad 2) $ vBox vs]) $ unzip explanations
-    drawForestCursor ::
-         ([CTree b] -> TreeCursor a b -> [CTree b] -> Widget n) -> ForestCursor a b -> Widget n
-    drawForestCursor combFunc (ForestCursor ne) = drawNonEmptyCursor combFunc ne
-    drawNonEmptyCursor :: ([b] -> a -> [b] -> Widget n) -> NonEmptyCursor a b -> Widget n
-    drawNonEmptyCursor combFunc NonEmptyCursor {..} =
-      combFunc (reverse nonEmptyCursorPrev) nonEmptyCursorCurrent nonEmptyCursorNext
-    drawTreeCursor ::
-         forall a b n.
-         ([CTree b] -> b -> [CTree b] -> Widget n -> Widget n)
-      -> (a -> CForest b -> Widget n)
-      -> TreeCursor a b
-      -> Widget n
-    drawTreeCursor wrapAboveFunc currentFunc TreeCursor {..} =
-      wrapAbove treeAbove $ currentFunc treeCurrent treeBelow
-      where
-        wrapAbove :: Maybe (TreeAbove b) -> Widget n -> Widget n
-        wrapAbove Nothing = id
-        wrapAbove (Just ta) = goAbove ta
-        goAbove :: TreeAbove b -> Widget n -> Widget n
-        goAbove TreeAbove {..} =
-          wrapAbove treeAboveAbove .
-          wrapAboveFunc (reverse treeAboveLefts) treeAboveNode treeAboveRights
-    helper :: [CTree Text] -> TreeCursor TextCursor Text -> [CTree Text] -> Widget ResourceName
-    helper befores current afters =
-      vBox $
-      concat
-        [map drawTextCTree befores, [drawTreeCursor wrap cur current], map drawTextCTree afters]
     cur :: TextCursor -> CForest Text -> Widget ResourceName
     cur tc cf =
       let ecw = withAttr selectedAttr $ (str "> " <+>) $ drawTextCursor tc

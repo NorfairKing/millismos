@@ -17,6 +17,7 @@ library:
   - bytestring
   - containers
   - cursor
+  - cursor-brick
   - directory
   - path-io
   - text
