@@ -20,6 +20,7 @@ import System.Environment
 import System.Exit
 
 import Cursor.Brick.Forest
+import Cursor.Brick.Text
 import Cursor.Brick.Tree
 import Cursor.Forest
 import Cursor.List.NonEmpty
@@ -154,19 +155,15 @@ draw s =
     wrap :: [CTree Text] -> Text -> [CTree Text] -> Widget n -> Widget n
     wrap tsl e tsr w =
       let befores = map drawTextCTree tsl
-          ew = txt e
+          ew = textWidget e
           afters = map drawTextCTree tsr
        in (str "- " <+> ew) <=> padLeft defaultPadding (vBox $ concat [befores, [w], afters])
     drawTextCursor :: TextCursor -> Widget ResourceName
-    drawTextCursor tc =
+    drawTextCursor =
       visible .
       (case stateMode s of
-         EditText -> showCursor TextResource (Brick.Location (textCursorIndex tc, 0))
-         EditForest -> id) $
-      txt $
-      case rebuildTextCursor tc of
-        "" -> " "
-        t -> t
+         EditText -> selectedTextCursorWidget TextResource
+         EditForest -> textCursorWidget)
 
 drawCForest :: CForest Text -> Widget n
 drawCForest cf =
@@ -178,7 +175,7 @@ drawCForest cf =
        in vBox etws
 
 drawTextCTree :: CTree Text -> Widget n
-drawTextCTree (CNode t cf) = vBox [hBox [str "- ", txt t], padLeft defaultPadding (drawCForest cf)]
+drawTextCTree (CNode t cf) = vBox [hBox [str "- ", textWidget t], padLeft defaultPadding (drawCForest cf)]
 
 nodeAttr :: AttrName
 nodeAttr = "node"
