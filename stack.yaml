@@ -3,11 +3,11 @@ packages:
 - .
 extra-deps:
 - git: https://github.com/NorfairKing/cursor-brick.git
-  commit: 178d50eac204cdae3d3aeb92c673b18f6245a4cb
+  commit: faa78e78ec750c82a7ef40c2579f4525ad836586
   subdirs:
     - cursor-brick
 - git: https://github.com/NorfairKing/cursor.git
-  commit: 9a83adbf713ab2874daeb082f10f30e5a07c2d70
+  commit: 919b798bf92ea381fd13e68c0f77d19a79296c97
   subdirs:
     - cursor
     - cursor-gen

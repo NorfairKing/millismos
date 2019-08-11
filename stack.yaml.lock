@@ -14,28 +14,28 @@ packages:
     git: https://github.com/NorfairKing/cursor-brick.git
     pantry-tree:
       size: 848
-      sha256: f885b9840a68512c5319e3a7fc0f16c6c4a061542c80165fd76fbcdd9b3fa2d9
-    commit: 178d50eac204cdae3d3aeb92c673b18f6245a4cb
+      sha256: 543192497555586a7df3a953027a54a55ef3c15f8d8ef926fdf24843e1e4522a
+    commit: faa78e78ec750c82a7ef40c2579f4525ad836586
   original:
     subdir: cursor-brick
     git: https://github.com/NorfairKing/cursor-brick.git
-    commit: 178d50eac204cdae3d3aeb92c673b18f6245a4cb
+    commit: faa78e78ec750c82a7ef40c2579f4525ad836586
 - completed:
     subdir: cursor
     cabal-file:
-      size: 1509
-      sha256: bed32274bd0ddd2148b67febf701dc09ec5a6798817f95c9866b5b259676a017
+      size: 1600
+      sha256: 66ece790ee2bf79410739848e98e954405d6c816150cf4f36337c3baa5e64c32
     name: cursor
-    version: 0.1.0.0
+    version: 0.1.0.1
     git: https://github.com/NorfairKing/cursor.git
     pantry-tree:
       size: 1760
-      sha256: 926e09cae70e2d08f3eb62ef21e68e13e86134afa955da0e865475ae60b9cabd
-    commit: 9a83adbf713ab2874daeb082f10f30e5a07c2d70
+      sha256: cf82d6a553732a906c462ceed482d0b996040017d26155cc1071cfd347d2a9b6
+    commit: 919b798bf92ea381fd13e68c0f77d19a79296c97
   original:
     subdir: cursor
     git: https://github.com/NorfairKing/cursor.git
-    commit: 9a83adbf713ab2874daeb082f10f30e5a07c2d70
+    commit: 919b798bf92ea381fd13e68c0f77d19a79296c97
 - completed:
     subdir: cursor-gen
     cabal-file:
@@ -47,11 +47,11 @@ packages:
     pantry-tree:
       size: 2608
       sha256: 2c0771a4bef4580c44aa4bc99bf27b65b72318cf8c35c180276bbdf9ae728e0d
-    commit: 9a83adbf713ab2874daeb082f10f30e5a07c2d70
+    commit: 919b798bf92ea381fd13e68c0f77d19a79296c97
   original:
     subdir: cursor-gen
     git: https://github.com/NorfairKing/cursor.git
-    commit: 9a83adbf713ab2874daeb082f10f30e5a07c2d70
+    commit: 919b798bf92ea381fd13e68c0f77d19a79296c97
 - completed:
     subdir: genvalidity
     cabal-file:
