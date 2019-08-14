@@ -142,6 +142,10 @@ draw s =
                 , ("J", "Add a child node")
                 , ("d", "Delete selected node")
                 , ("D", "Delete selected subtree")
+                , ("h", "Promote the selected node")
+                , ("H", "Promote the selected subtree")
+                , ("l", "Demote the selected node")
+                , ("L", "Demote the selected subtree")
                 , ("Up", "move to previous node")
                 , ("Down", "move to next node")
                 , ("Esc", "Exit")
@@ -175,7 +179,8 @@ drawCForest cf =
        in vBox etws
 
 drawTextCTree :: CTree Text -> Widget n
-drawTextCTree (CNode t cf) = vBox [hBox [str "- ", textWidget t], padLeft defaultPadding (drawCForest cf)]
+drawTextCTree (CNode t cf) =
+  vBox [hBox [str "- ", textWidget t], padLeft defaultPadding (drawCForest cf)]
 
 nodeAttr :: AttrName
 nodeAttr = "node"
@@ -236,6 +241,10 @@ handleEvent s e =
                         KChar 'I' -> switchMode
                         KChar 'a' -> switchMode
                         KChar 'A' -> switchMode
+                        KChar 'h' -> mDo $ forestCursorPromoteElem toText toTextCursor
+                        KChar 'H' -> mDo $ forestCursorPromoteSubTree toText toTextCursor
+                        KChar 'l' -> mDo $ forestCursorDemoteElem toText toTextCursor
+                        KChar 'L' -> mDo $ forestCursorDemoteSubTree toText toTextCursor
                         KChar 'j' -> mDo $ Just . forestCursorAppend ""
                         KChar 'J' -> mDo $ Just . forestCursorAddChildToNodeAtStart ""
                         KChar 'd' ->
